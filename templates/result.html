@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Resume Details</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Resume Information</h1>
+
+<p><b>Name:</b> {{ data.name }}</p>
+
+<p><b>Email:</b> {{ data.email }}</p>
+
+<p><b>Phone:</b> {{ data.phone }}</p>
+
+<p><b>Skills:</b></p>
+
+<ul>
+
+{% for skill in data.skills %}
+
+<li>{{ skill }}</li>
+
+{% endfor %}
+
+</ul>
+
+<p><b>Education:</b></p>
+
+<ul>
+
+{% for edu in data.education %}
+
+<li>{{ edu }}</li>
+
+{% endfor %}
+
+</ul>
+
+<hr>
+
+<h2>Extracted Resume Text</h2>
+
+<pre style="text-align:left; white-space:pre-wrap;">
+
+{{ data.text }}
+
+</pre>
+
+<br>
+
+<a href="/">
+
+<button>
+
+Upload Another Resume
+
+</button>
+
+</a>
+
+</div>
+
+</body>
+
+</html>

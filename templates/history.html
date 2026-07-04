@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Resume Dashboard</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📄 Resume Dashboard</h1>
+
+<h3>Total Resumes : {{ total }}</h3>
+
+<form action="/search" method="POST">
+
+<input
+type="text"
+name="keyword"
+placeholder="Search by Name or Skill">
+
+<button type="submit">
+Search
+</button>
+
+</form>
+
+<br>
+
+<a href="/export">
+<button>📥 Export CSV</button>
+</a>
+
+<br><br>
+
+<div class="table-container">
+
+<table>
+
+<tr>
+
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Phone</th>
+<th>Skills</th>
+<th>Education</th>
+<th>Action</th>
+
+</tr>
+
+{% for resume in resumes %}
+
+<tr>
+
+<td>{{resume[0]}}</td>
+<td>{{resume[1]}}</td>
+<td>{{resume[2]}}</td>
+<td>{{resume[3]}}</td>
+<td>{{resume[4]}}</td>
+<td>{{resume[5]}}</td>
+
+<td>
+
+<a href="/delete/{{resume[0]}}">
+Delete
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+<br>
+
+<a href="/">
+<button>
+
+⬅ Upload Another Resume
+
+</button>
+
+</a>
+
+</div>
+
+</body>
+</html>
